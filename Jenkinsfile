@@ -1,4 +1,5 @@
 pipeline {
+  when { branch "staging" }
   agent {
     docker {
       image 'node:6-alpine'
@@ -13,14 +14,14 @@ pipeline {
       }
     }
 
-    // stage('Test') {
-    //   environment {
-    //     CI = 'true'
-    //   }
-    //   steps {
-    //     sh './jenkins/scripts/test.sh'
-    //   }
-    // }
+    stage('Test') {
+      environment {
+        CI = 'true'
+      }
+      steps {
+        sh './jenkins/scripts/test.sh'
+      }
+    }
 
     stage('Deliver') {
       steps {
