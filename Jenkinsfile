@@ -1,5 +1,4 @@
 pipeline {
-  when { branch "staging" }
   agent {
     docker {
       image 'node:6-alpine'
